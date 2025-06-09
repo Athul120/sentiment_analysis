@@ -6,7 +6,7 @@ from nlp.sentiment import analyze_text
 
 app=FastAPI()
 
-@app.post("/sentiment-analysis/",response_model=TextRequest)
+@app.post("/sentiment-analysis/",response_model=TextResponse)
 def text(payload:TextRequest):
     text=payload.text
     sentiment=analyze_text(text)
@@ -18,7 +18,7 @@ def text(payload:TextRequest):
     return TextResponse(
         sentiment=sentiment,
         language=language,
-        text=request.text 
+        text=payload.text 
     )
 
 @app.get("/")
