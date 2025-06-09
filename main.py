@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from schemas import TextResponse,TextRequest
 from nlp.languagedetect import analyze_language
 from nlp.sentiment import analyze_text
+from nlp.summary import summary_text
 
 
 app=FastAPI()
@@ -12,7 +13,7 @@ def text(payload:TextRequest):
     sentiment=analyze_text(text)
 
 
-    # summary=summary_text(text)
+    summary=summary_text(text)
     language=analyze_language(text)
 
     return TextResponse(

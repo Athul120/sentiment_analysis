@@ -1,10 +1,9 @@
-# from transforms import pipeline 
+from transformers import pipeline
 
-# summerizer=pipeline("summerizer")
+summarizer = pipeline("summarization")
 
-# def summary_text(text:str)->str:
-#     if len(text.split())<30:
-#         return text
-#     summary=summerizer(text,max_leangth=60,min_leangth=10)
-#     return summary['summery text']
-    
+def summary_text(text: str) -> str:
+    if len(text.split()) < 30:
+        return text
+    summary = summarizer(text, max_length=60, min_length=10, do_sample=False)
+    return summary[0]['summary_text']

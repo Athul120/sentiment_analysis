@@ -8,3 +8,4 @@ class TextResponse(BaseModel):
     sentiment:str
     language: str
     text:str
+    summary:str
